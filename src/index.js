@@ -17,6 +17,8 @@ function refreshWeather(response) {
   humidityElement.innerHTML = response.data.temperature.humidity;
   windSpeedElement.innerHTML = `${Math.round(windSpeed)} km/h`;
   icon.innerHTML = `<img src= "${response.data.condition.icon_url}" class="weather-app-icon" id="weather-app-icon">`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -52,7 +54,15 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "17b4f3ta25645bo69a6fb0ae0d4e01f3";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -66,9 +76,8 @@ function displayForecast() {
     <div class="weather-forecast-date">${day}</div>
       <div class="weather-forecast-icon">⛅️</div>
       <div class="weather-forecast-temperature"> 
-        <strong>18°</strong>
-      </div>
-      <div class="weather-forecast-temperature">12°</div>
+        <span class="weather-forecast-max">18°</span>
+      <span class="weather-forecast-min">12°</span>
     </div>
   </div>
   `;
@@ -80,4 +89,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Washington");
-displayForecast();

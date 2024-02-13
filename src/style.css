@@ -75,7 +75,7 @@ main {
   color: rgb(150, 169, 194);
 }
 .weather-forecast {
-  margin-top: 20px;
+  margin: 20px;
   display: flex;
   justify-content: space-around;
   text-align: center;

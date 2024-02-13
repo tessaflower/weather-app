@@ -15,7 +15,7 @@ function refreshWeather(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   temperatureElement.innerHTML = Math.round(temperature);
   humidityElement.innerHTML = response.data.temperature.humidity;
-  windSpeedElement.innerHTML = `${Math.round(windSpeed)} km/h`;
+  windSpeedElement.innerHTML = `${Math.round(windSpeed)} mi/h`;
   icon.innerHTML = `<img src= "${response.data.condition.icon_url}" class="weather-app-icon" id="weather-app-icon">`;
 
   getForecast(response.data.city);
@@ -43,7 +43,7 @@ function formatDate(date) {
 
 function searchCity(city) {
   let apiKey = "17b4f3ta25645bo69a6fb0ae0d4e01f3";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(refreshWeather);
 }
 
@@ -63,7 +63,7 @@ function formatDay(timestamp) {
 
 function getForecast(city) {
   let apiKey = "17b4f3ta25645bo69a6fb0ae0d4e01f3";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
 }
 

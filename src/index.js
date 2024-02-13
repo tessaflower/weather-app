@@ -68,8 +68,6 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = "";

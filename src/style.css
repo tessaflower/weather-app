@@ -71,7 +71,7 @@ main {
   color: rgba(39, 33, 66, 0.4);
   font-weight: 500;
 }
-.weather-app-details strong {
+strong {
   color: rgb(150, 169, 194);
 }
 .weather-forecast {
@@ -85,9 +85,17 @@ main {
   font-size: 16px;
   opacity: 0.5;
 }
-.weather-forecast-temperature-minimum {
-  opacity: 0.6;
+
+.weather-forecast-icon {
+  width: 88px;
+  display: block;
+  margin: 0 auto;
+}
+.weather-forecast-min {
+  opacity: 0.8;
+  margin: 20px;
 }
 .weather-forecast-temperature {
   font-size: 13px;
+  margin: 20px;
 }
